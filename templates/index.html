@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Scanner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Resume Scanner</h1>
+
+
+    <form method="POST" enctype="multipart/form-data">
+        <!--Upload Resume---->
+        <label>Upload Resume (PDF)</label><br>
+        <input type="file" name="resume" required><br><br>
+
+        <!--Job Description-->
+        <label>Job Description</label><br>
+        <textarea name="job_description" required></textarea><br><br>
+
+
+        <button type="submit">Scan Resume</button>
+    </form>
+    {% if result %}
+        <div class="result">
+            <h2>Result</h2>
+            <p><strong>Match Score:</strong> {{ result.score }}%</p>
+            <p><strong>Status:</strong> {{ result.status }}</p>
+            <p><strong>Matched Skills:</strong> {{ result.matched }}</p>
+            <p><strong>Missing Skills:</strong> {{ result.missing }}</p>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
